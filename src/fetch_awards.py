@@ -64,7 +64,7 @@ def main():
         for code in EXTENT_COMPETED_CODES:
             path = RAW_DIR / f"awards_{year}_{code}.json"
             if path.exists():
-            print(f"{year} {code}: already done, skipping")
+                print(f"{year} {code}: already done, skipping")
             continue
 
             page = 1
