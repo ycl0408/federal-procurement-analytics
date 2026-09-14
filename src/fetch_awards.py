@@ -65,27 +65,26 @@ def main():
             path = RAW_DIR / f"awards_{year}_{code}.json"
             if path.exists():
                 print(f"{year} {code}: already done, skipping")
-            continue
+                continue
 
-        page = 1
-        collected = []
+            page = 1
+            collected = []
 
-        while True:
-            payload = create_payload(dates, code, page)
-            response = fetch_page(payload)
-            results = response["results"]
-            for award in results:
-                award["fiscal_year"] = year
-                award["extent_competed"] = code
-            collected += results
-            if not response["page_metadata"]["hasNext"]:
-                break
-            page += 1
+            while True:
+                payload = create_payload(dates, code, page)
+                response = fetch_page(payload)
+                results = response["results"]
+                for award in results:
+                    award["fiscal_year"] = year
+                    award["extent_competed"] = code
+                collected += results
+                if not response["page_metadata"]["hasNext"]:
+                    break
+                page += 1
 
-        path = RAW_DIR / f"awards_{year}_{code}.json"
-        with open(path, "w") as f:
-            json.dump(collected, f)
-        print(f"{year} {code}: saved {len(collected)} awards to {path}")
-        
+            with open(path, "w") as f:
+                json.dump(collected, f)
+            print(f"{year} {code}: saved {len(collected)} awards to {path}")
+            
 if __name__ == "__main__":
     main()
