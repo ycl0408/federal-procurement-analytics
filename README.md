@@ -8,7 +8,7 @@ Pipeline and SQL analysis of US federal contract awards from the USAspending API
 
 ## Scope
 
-- Agency: U.S. Army Corps of Engineers
+- Agency: NASA
 - Fiscal years: 2022-2024
 - Award types: contracts (excludes grants, loans, and other assistance)
 - Source: [USAspending API](https://api.usaspending.gov/)
