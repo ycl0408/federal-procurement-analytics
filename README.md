@@ -16,3 +16,9 @@ Pipeline and SQL analysis of US federal contract awards from the USAspending API
 ## Status
 
 Work in progress. Pipeline and schema coming next.
+
+## Definitions
+
+An award is counted in a fiscal year if it was newly signed in that year (date_type: new_awards_only), not if it merely had a modification in that year. The default API behaviour would include the latter.
+
+The API returns NAICS as a nested object with code and description; these are split into separate columns and stored in a naics_codes reference table.
