@@ -15,7 +15,9 @@ Pipeline and SQL analysis of US federal contract awards from the USAspending API
 
 ## Status
 
-Work in progress. Schema is done ([schema.sql](schema.sql)); the loader comes next.
+Work in progress. Schema ([schema.sql](schema.sql)) and loader ([src/load_awards.py](src/load_awards.py)) are done, with the cleaning decisions in [NOTES.md](NOTES.md); the queries come next.
+
+To build the database from the raw files, run `python src/load_awards.py` from the repo root; it writes `data/processed/procurement.db`.
 
 ## Schema
 
