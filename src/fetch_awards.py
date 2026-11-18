@@ -20,7 +20,6 @@ FIELDS = [
     "Recipient UEI",
     "Award Amount",
     "Start Date",
-    "End Date",
     "Contract Award Type",
     "NAICS",
     "Awarding Sub Agency",
@@ -40,8 +39,7 @@ def create_payload(fy_dates, code, page):
             "time_period": [{"start_date": fy_dates[0], "end_date": fy_dates[1], "date_type": "new_awards_only"}],
             "extent_competed_type_codes": [code]
         },
-        "fields": ["Award ID", "Recipient Name", "Recipient UEI", "Award Amount", "Start Date",
-                   "Awarding Sub Agency", "Contract Award Type", "NAICS", "generated_internal_id"],
+        "fields": FIELDS,
         "page": page,
         "limit": PAGE_SIZE,
     }
@@ -56,7 +54,7 @@ def fetch_page(payload, retries=3):
             return r.json()
         print(f"  attempt {attempt + 1} failed ({r.status_code}), retrying...")
         time.sleep(5 * (attempt + 1))
-    r.raise_for_status
+    r.raise_for_status()
 
 def main():
     RAW_DIR.mkdir(parents=True, exist_ok=True)
